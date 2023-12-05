@@ -8,31 +8,31 @@ const { SECRET_KEY } = process.env;
 export const checkPermission = async (req, res, next) => {
   try {
     // Bước 1: Kiểm tra xem headers có token hay không?
-    const token = req.headers.authorization?.split(" ")[1];
+    // const token = req.headers.authorization?.split(" ")[1];
 
-    if (!token) {
-      return res.status(404).json({
-        message: "Bạn chưa đăng nhập!",
-      });
-    }
+    // if (!token) {
+    //   return res.status(404).json({
+    //     message: "Bạn chưa đăng nhập!",
+    //   });
+    // }
 
-    // Bước 2: Verify token để lấy user.
-    const decoded = jwt.verify(token, SECRET_KEY);
-    if (!decoded) {
-      throw new Error("JWT Error:");
-    }
-    const user = await User.findById(decoded._id);
-    if (!user) {
-      return res.status(400).json({
-        message: "User không tồn tại trong hệ thống!",
-      });
-    }
+    // // Bước 2: Verify token để lấy user.
+    // const decoded = jwt.verify(token, SECRET_KEY);
+    // if (!decoded) {
+    //   throw new Error("JWT Error:");
+    // }
+    // const user = await User.findById(decoded._id);
+    // if (!user) {
+    //   return res.status(400).json({
+    //     message: "User không tồn tại trong hệ thống!",
+    //   });
+    // }
 
-    if (user.role !== "admin") {
-      return res.status(400).json({
-        message: "Bạn không có quyền làm việc này!",
-      });
-    }
+    // if (user.role !== "admin") {
+    //   return res.status(400).json({
+    //     message: "Bạn không có quyền làm việc này!",
+    //   });
+    // }
 
     // Cach 2:
     // if(user && user.role === "admin"){

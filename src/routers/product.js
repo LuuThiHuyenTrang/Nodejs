@@ -13,7 +13,7 @@ const routerPro = Router();
 routerPro.get("/", getAll);
 routerPro.get("/:id", getDetail);
 routerPro.post("/", checkPermission, create);
-routerPro.put("/:id", checkPermission, update);
+routerPro.patch("/:id", checkPermission, update);
 routerPro.delete("/:id", checkPermission, remove);
 
 export default routerPro;

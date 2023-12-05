@@ -11,9 +11,21 @@ const signUpValid = Joi.object({
     .valid(Joi.ref("password")),
   role: Joi.string(),
 });
-export const signInValid = Joi.object({
+const UpUserValid = Joi.object({
+  _id: Joi.string(),
+  userName: Joi.string().required().min(6).max(255),
+  email: Joi.string().email().required(),
+  password: Joi.string().required().min(6).max(255),
+  confirmPassword: Joi.string()
+    .required()
+    .min(6)
+    .max(255)
+    .valid(Joi.ref("password")),
+  role: Joi.string(),
+});
+const signInValid = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required().min(6).max(255),
 });
 
-export default signUpValid;
+export { signUpValid, UpUserValid, signInValid };

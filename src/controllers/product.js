@@ -5,11 +5,12 @@ dotenv.config();
 const { API_URL } = process.env;
 
 export const getAll = async (req, res) => {
+  //localhost:1001/api/products
   try {
     const {
       _sort = "price",
       _order = "asc",
-      _limit = 10,
+      _limit = 50,
       _page = 1,
     } = req.query;
 
